@@ -62,6 +62,7 @@
 
             userSelectedNum = $(this).text()
         });
+
         
         arry.forEach((e, i) => {
             $(".main")
@@ -71,13 +72,18 @@
         });
         
         $(".main").click(function () {
+        if(userSelectedNum == 0 ) {alert('Frist Select The number')}
+        else{
 
-            $(".main").css('animation-play-state','running')
+
+            // $(".main").css('animation-play-state','running')
+             $(".main").css("animation", "rotate 1s infinite linear");
+             setTimeout(() => {
+                 
+                 $(".main").css("animation", "none");
+            }, 2400);
             setTimeout(() => {
-                
-                $(".main").css('animation-play-state','paused')
-            }, 1500);
-            setTimeout(() => {
+                $(".main").css({ transform: "rotateX(0deg)" });
                 
             diceNum = Math.floor(Math.random() * 7);
             console.log(diceNum);
@@ -99,17 +105,26 @@
             } else if (diceNum == 3) {
                 $(".main").css({ transform: "rotateY(270deg) " });
             }
+            $('.num').css({ "background-color": "white", color: "black" })
+            if(userSelectedNum == diceNum){
+                score += 2
+        $(".score").text(score);
+                
+                
+                console.log("Inside the scroll"+score);
+                
+            }
+            userSelectedNum = 0
             }, 2500);
+
+        }
+
 
         });
         
-        if(userSelectedNum == diceNum ){
-            $(".score").text(score);
-            score += score + 2
-
-
-
-        }
+        
+        console.log(score);
+        
       });
     </script>
   </body>
