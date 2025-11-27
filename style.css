@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 1s ;
-    transition-duration:ease-in;
+    
 }
 
 html,
@@ -76,12 +75,15 @@ body{
     height: 300px;
     width: 300px;
     margin: 0 auto;
+    transition: all 1s ;
+    transition-duration:ease-in;
     /* transform: scale(0.5); */
     margin-top: 100px;
     transform-style: preserve-3d;
     position: relative;
-    animation: rotate 1s linear infinite;
-    animation-play-state: paused;
+    
+    /* animation: rotate 1s linear infinite; */
+    /* animation-play-state: paused; */
 }
 
 
