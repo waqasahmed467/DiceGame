@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 1s;
+    transition: all 1s ;
+    transition-duration:ease-in;
 }
 
 html,
@@ -79,7 +80,8 @@ body{
     margin-top: 100px;
     transform-style: preserve-3d;
     position: relative;
-    animation: rotat 5s linear infinite;
+    animation: rotate 1s linear infinite;
+    animation-play-state: paused;
 }
 
 
@@ -89,11 +91,11 @@ body{
 @keyframes rotate {
 
     from {
-        transform: rotateY(0deg);
+        transform: rotateY(0deg) rotateX(0deg);
     }
 
     to {
-        transform: rotateY(360deg);
+        transform: rotateY(360deg) rotateX(360deg);
     }
 
 
