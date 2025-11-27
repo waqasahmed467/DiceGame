@@ -71,6 +71,14 @@
         });
         
         $(".main").click(function () {
+
+            $(".main").css('animation-play-state','running')
+            setTimeout(() => {
+                
+                $(".main").css('animation-play-state','paused')
+            }, 1500);
+            setTimeout(() => {
+                
             diceNum = Math.floor(Math.random() * 7);
             console.log(diceNum);
             
@@ -91,6 +99,8 @@
             } else if (diceNum == 3) {
                 $(".main").css({ transform: "rotateY(270deg) " });
             }
+            }, 2500);
+
         });
         
         if(userSelectedNum == diceNum ){
