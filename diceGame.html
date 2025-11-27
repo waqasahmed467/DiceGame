@@ -1,118 +1,106 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>diceGame</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="header">
+      <h1 style="text-align: center" class="score">
+        0
+        <span style="font-size: 16px; font-weight: 400; margin-top: -10px"
+          >Score</span
+        >
+      </h1>
 
-        <h1 style="text-align: center;" class="score">0 <span
-                style="font-size: 16px; font-weight: 400; margin-top: -10px;">Score</span></h1>
-
-        <div class="innermain">
-
-            <div class="contain">
-                <div class="num">1</div>
-                <div class="num">2</div>
-                <div class="num">3</div>
-                <div class="num">4</div>
-                <div class="num">5</div>
-                <div class="num">6</div>
-            </div>
-            <h1 style="font-size: 1.5vw; text-align: right;margin-top: 2px;">Select Number</h1>
+      <div class="innermain">
+        <div class="contain">
+          <div class="num">1</div>
+          <div class="num">2</div>
+          <div class="num">3</div>
+          <div class="num">4</div>
+          <div class="num">5</div>
+          <div class="num">6</div>
         </div>
-
-
+        <h1 style="font-size: 1.5vw; text-align: right; margin-top: 2px">
+          Select Number
+        </h1>
+      </div>
     </div>
-
-
 
     <div class="main">
-
-        <div id="box" class="top"></div>
-        <div id="box" class="bottom"></div>
-        <div id="box" class="right"></div>
-        <div id="box" class="left"></div>
-        <div id="box" class="front"></div>
-        <div id="box" class="back"></div>
-
-
-
-
+      <div id="box" class="top"></div>
+      <div id="box" class="bottom"></div>
+      <div id="box" class="right"></div>
+      <div id="box" class="left"></div>
+      <div id="box" class="front"></div>
+      <div id="box" class="back"></div>
     </div>
 
-    <h1 style="color: white; text-align: center; margin-top: -40px;">Click TO Roll Dice</h1>
+    <h1 style="color: white; text-align: center; margin-top: -40px">
+      Click TO Roll Dice
+    </h1>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
-        $(document).ready(() => {
-            arry = [1, 2, 3, 4, 5, 6]
+      $(document).ready(() => {
+        arry = [1, 2, 3, 4, 5, 6];
+        let userSelectedNum = 0
+        let diceNum = 0
+        let score = 0
 
-            // $('.main').children(4).css('background-color','red')
+        
+        // $('.main').children(4).css('background-color','red')
 
-            arry.forEach((e, i) => {
+        $(".num").click(function () {
+          $(this).css({ "background-color": "black", color: "white" });
+          $(".num")
+            .not($(this))
+            .css({ "background-color": "white", color: "black" });
 
-
-                $('.main').children().eq(i).css('background-image', `url(images/${e}.png)`)
-
-            });
-
-            $('.main').click(function () {
-
-                let diceNum = Math.floor(Math.random() * 7);
-                console.log(diceNum);
-
-                $('.score').text(diceNum)
-
-                if (diceNum == 1) {
-                    $('.main').css({ transform: 'rotateX(90deg) ' })
-                }
-                else if (diceNum == 4) {
-                    $('.main').css({ transform: 'rotateY(90deg) ' })
-                }
-                else if (diceNum == 5) {
-                    $('.main').css({ transform: 'rotateY(0deg) ' })
-                }
-                else if (diceNum == 2) {
-                    $('.main').css({ transform: 'rotateX(-90deg) ' })
-                }
-                else if (diceNum == 6) {
-                    $('.main').css({ transform: 'rotateY(180deg) ' })
-                }
-                else if (diceNum == 3) {
-                    $('.main').css({ transform: 'rotateY(210deg) ' })
-                }
-
-
-
-
-
-
-
-
-
-            })
-
-
-
-            $('.num').click(function () {
-                $(this).css({ 'background-color': 'black', 'color': 'white' })
-                $('.num').not($(this)).css({ 'background-color': 'white', 'color': 'black' })
-
-            })
+            userSelectedNum = $(this).text()
+        });
+        
+        arry.forEach((e, i) => {
+            $(".main")
+            .children()
+            .eq(i)
+            .css("background-image", `url(images/${e}.png)`);
+        });
+        
+        $(".main").click(function () {
+            diceNum = Math.floor(Math.random() * 7);
+            console.log(diceNum);
+            
+            if (diceNum == 0) {
+                diceNum = diceNum + 5;
+            }
+            
+            if (diceNum == 1) {
+                $(".main").css({ transform: "rotateX(90deg) " });
+            } else if (diceNum == 4) {
+                $(".main").css({ transform: "rotateY(90deg) " });
+            } else if (diceNum == 5) {
+                $(".main").css({ transform: "rotateY(0deg) " });
+            } else if (diceNum == 2) {
+                $(".main").css({ transform: "rotateX(-90deg) " });
+            } else if (diceNum == 6) {
+                $(".main").css({ transform: "rotateY(180deg) " });
+            } else if (diceNum == 3) {
+                $(".main").css({ transform: "rotateY(270deg) " });
+            }
+        });
+        
+        if(userSelectedNum == diceNum ){
+            $(".score").text(score);
+            score += score + 2
 
 
 
-
-
-
-        })
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
