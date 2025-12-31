@@ -17,24 +17,6 @@ body{
     perspective: 4000px;
 }
 
-body::before{
-    content:'';
-    height: 250px;
-    width: 250px;
-    background-color: rgba(255, 0, 0, 0.507);
-    position: absolute;
-    top: 70%;
-    border-radius: 50%;
-    filter: blur(40px);
-    box-shadow: 0px 0px 30px 10px yellow;
-    left: 50%;
-    transform: translate(-50%,-50%);
-
-}
-
-
-
-
 
 
 .header {
